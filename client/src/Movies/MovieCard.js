@@ -4,7 +4,7 @@ export default function MovieCard(props) {
   const { movie } = props
 
   const { title, director, metascore, stars } = movie
-  // console.log(stars)
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>

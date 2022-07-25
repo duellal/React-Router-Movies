@@ -10,7 +10,6 @@ import Movie from './Movies/Movie'
 export default function App() {
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
-  console.log(movieList)
 
   useEffect(() => {
     const getMovies = () => {
@@ -28,19 +27,23 @@ export default function App() {
     getMovies();
   }, []);
 
-  const addToSavedList = id => {
+  const addToSavedList = movie => {
     // This is stretch. Prevent the same movie from being "saved" more than once
+    if (movie != saved) {
+      setSaved([...saved, movie])
+    }
+    return saved
   };
 
   return (
     <div>
-      <SavedList list={[ /* This is stretch */]} />
+      <SavedList list={saved} />
 
       <Route exact path={`/`}>
         <MovieList movies={movieList} />
       </Route>
       <Route path={`/movies/:movieID`}>
-        <Movie />
+        <Movie addToSavedList={addToSavedList} />
       </Route>
     </div>
   );
