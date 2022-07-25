@@ -9,8 +9,6 @@ export default function Movie(props) {
   const { addToSaveList } = props
   const [movie, setMovie] = useState();
 
-  // console.log(movie)
-
   const { movieID } = useParams();
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
