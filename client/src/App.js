@@ -27,20 +27,22 @@ export default function App() {
     getMovies();
   }, []);
 
+  //Getting an error that below is not a function - not sure if it's from below, or from the props and how I'm trying to use it in the Movie.js
   const addToSavedList = movie => {
     // This is stretch. Prevent the same movie from being "saved" more than once
-    if (movie != saved) {
-      setSaved([...saved, movie])
+    if (movie.indexOf(movie.title) != -1) {
+      setSaved(...saved, movie.title)
     }
     return saved
-  };
+  }
+
 
   return (
     <div>
       <SavedList list={saved} />
 
       <Route exact path={`/`}>
-        <MovieList movies={movieList} />
+        <MovieList movies={movieList} addToSavedList={addToSavedList} />
       </Route>
       <Route path={`/movies/:movieID`}>
         <Movie addToSavedList={addToSavedList} />
