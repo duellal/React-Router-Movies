@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+import MovieCard from './MovieCard';
+
 export default function MovieList(props) {
   const { movies } = props
+  // console.log(movies)
+  // The above gives an empty array + an array of the movies list but w/o the stars data
   return (
     <div className="movie-list">
       {movies.map(movie => (
@@ -13,19 +17,13 @@ export default function MovieList(props) {
 }
 
 function MovieDetails(props) {
-  const { title, director, metascore } = props.movie;
+  const { movie } = props;
 
+  // console.log(movie.stars) This is undefined here
+  // console.log(movie) gives the result intended but w/o stars in the data
   return (
-    <Link to={`/movies/${props.movie.id}`}>
-      <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
-      </div>
+    <Link to={`/movies/${movie.id}`}>
+      <MovieCard movie={movie} />
     </Link>
   );
 }
