@@ -6,7 +6,7 @@ import MovieCard from './MovieCard';
 import MovieList from './MovieList';
 
 export default function Movie(props) {
-  const { addToSaveList } = props
+  const { addToSavedList } = props
   const [movie, setMovie] = useState();
 
   const { movieID } = useParams();
@@ -29,7 +29,7 @@ export default function Movie(props) {
 
   // Uncomment this only when you have moved on to the stretch goals
   const saveMovie = evt => {
-    addToSaveList(movie)
+    addToSavedList(movie)
   }
 
   if (!movie) {
