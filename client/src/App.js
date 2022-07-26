@@ -30,11 +30,12 @@ export default function App() {
   //Getting an error that below is not a function - not sure if it's from below, or from the props and how I'm trying to use it in the Movie.js
   const addToSavedList = movie => {
     // This is stretch. Prevent the same movie from being "saved" more than once
-    if (saved.indexOf(movie.title) !== -1) {
-      setSaved([...saved, movie.title])
-    }
-    console.log(saved)
-    return saved
+    if (saved)
+
+      if (saved.includes(movie)) {
+        console.log(`You've already saved this movie.`)
+      }
+      else (setSaved([...saved, movie]))
   }
 
 
